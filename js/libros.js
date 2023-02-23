@@ -17,7 +17,9 @@ function preguntarPrecios(){
 }
 
 function iniciarConsulta(){
-    let libroElegido = parseInt(prompt("Ingrese el número del libro que desea comprar?"))
+    let libroElegido = parseInt(prompt("Ingrese el número del libro que desea comprar \n 1- Caballo de fuego Paris \n 2- Caballo de fuego Congo \n 3- Caballo de fuego Gaza \n 4- El cuarto arcano \n 5- Indias blancas 1 \n 6- Indias blancas 2 \n 7- El hechizo del agua \n 8- Bodas de odio"))
+                                      
+
     if (libroElegido >8 ||libroElegido <1 ){
         alert('Ingresaste un nro de libro incorrecto')
         return
