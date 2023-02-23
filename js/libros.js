@@ -1,3 +1,4 @@
+window.addEventListener("load", function () {})
 let libro1 = 5500
 let libro2 = 5500
 let libro3 = 5500
