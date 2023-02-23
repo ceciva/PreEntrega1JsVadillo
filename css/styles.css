@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic");
+    
+* {
+    margin: 0;
+    padding: 0;
+  }
+html {
+    font-size: 62,5%;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  }
+  
+body {
+    background-image: url(/img/bubble2.png);
+    background-attachment: sticky;
+}
+
+h1{
+    font-family: roboto;
+    font-weight: 700;
+    text-align: center;
+}
+h2{
+    font-family: roboto;
+    font-weight: 600;
+    text-align: center;
+}
+h3{
+    font-family: roboto;
+    font-weight: 400;
+    text-align: center;
+}
+h5 {
+    font-family: roboto;
+    font-weight: 300;
+    text-align: center;
+}
+
+.tapaLibro{
+    width: 20vh;
+    height: auto;
+    margin: 5% auto;
+    
+}
+.btn-more{
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,236,1) 100%);
+    color: white;    
+}
+
+
+.center{
+    text-align: center;
+}
+#inputSearch {
+    font-size: larger;
+}
