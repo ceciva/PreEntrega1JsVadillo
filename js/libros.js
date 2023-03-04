@@ -1,65 +1,78 @@
-window.addEventListener("load", function () {})
-let libro1 = 5500
-let libro2 = 5500
-let libro3 = 5500
-let libro4 = 4800
-let libro5 = 4200
-let libro6 = 4500
-let libro7 = 6800
-let libro8 = 6200
-let continuar = true
-
-function preguntarPrecios(){
-    while (continuar){
-        iniciarConsulta()
-        continuar = confirm("Querés consultar el precio de otro libro?")
+const libros = [ {titulo: 'Caballo De Fuego Paris' , codigo: 1, precio: 5500},
+                 {titulo: 'Caballo De Fuego Congo', codigo: 2, precio: 5500},
+                 {titulo: 'Caballo De Fuego Gaza', codigo: 3, precio: 5500},
+                 {titulo: 'El Cuarto Arcano', codigo: 4, precio: 4800},
+                 {titulo: 'Indias Blancas', codigo: 5, precio: 4200},
+                 {titulo: 'Indias Blancas', codigo: 6, precio: 4500},
+                 {titulo: 'El Hechizo Del Agua', codigo: 7, precio: 6800},
+                 {titulo: 'Bodas de fuego', codigo: 8, precio: 6200}]
+                 
+class CarritoCompra{
+    constructor (titulo, codigo, precio){
+        this.titulo = titulo
+        this.codigo = codigo
+        this.precio = precio
     }
 }
+const carritoCompra = []
 
+let continuar = true
+let libroElegido = 0
+totalCarrito = 0
+
+window.addEventListener("load", function () {
+comprar()
+})
+
+
+function comprar(){
+    while (continuar){ 
+        iniciarConsulta()
+        continuar = confirm("Querés comprar otro libro?")
+    }
+    
+    finalizarCompra()
+    console.log('compraste los siguientes libros: ')
+    mostrarCarrito () 
+    console.log('el total de tu compra es de $: ' + totalCarrito)
+    
+    // alert((carritoCompra.join ("\n")) + "\nEl total de tu compra es de $: "+ totalCarrito +"\nGracias por tu compra")
+}    
+
+//promptea nro de libro a comprar  chequea su validez
 function iniciarConsulta(){
-    let libroElegido = parseInt(prompt("Ingrese el número del libro que desea comprar \n 1- Caballo de fuego Paris \n 2- Caballo de fuego Congo \n 3- Caballo de fuego Gaza \n 4- El cuarto arcano \n 5- Indias blancas 1 \n 6- Indias blancas 2 \n 7- El hechizo del agua \n 8- Bodas de odio"))
-                                      
+    let libroElegido = parseInt(prompt("Ingrese el número del libro que desea comprar "))
 
-    if (libroElegido >8 ||libroElegido <1 ){
+    if (libroElegido > libros.length|| libroElegido< 1 ||!parseInt(libroElegido)){
         alert('Ingresaste un nro de libro incorrecto')
         return
+    }else{
+        buscarLibro(libroElegido)
     }
-        switch(libroElegido){
-            case 1:
-                msjCosto = "Caballo de fuego Paris cuesta: $ " + libro1
-                break
-            case 2:
-                msjCosto = "Caballo de fuego Congo cuesta: $ " + libro2
-                break
-            case 3:
-                msjCosto = "Caballo de fuego Gaza cuesta: $ " + libro3
-                break
-            case 4:
-                msjCosto = " Cuarto arcano cuesta: $ " + libro4
-                break
-            case 5:
-                msjCosto = "Indias blancas 1 cuesta: $ " + libro5
-                break
-            case 6:
-                msjCosto = "Indias blancas 2 cuesta: $ " + libro6
-                break
-            case 7:
-                msjCosto = "El hechizo del agua cuesta: $ " + libro7
-                break
-            case 8:
-                msjCosto = "Bodas de odio cuesta: $ " + libro8
-                break
-            default:
-                alert('Ingresaste un nro de libro incorrecto')  
-                return          
-        }
-        alert (msjCosto)
-                        
 }
+//busca el libro en el array y lo pushea al carrito de compras
+function buscarLibro(libroElegido){
+    let resultado = libros.find(libro => libro.codigo === libroElegido)
+    carritoCompra.push(new CarritoCompra(resultado.titulo, resultado.codigo, resultado.precio))
+    
+    
+}       
+// recorre el carrito y suma el precio de cada libro
+function finalizarCompra(){
+    carritoCompra.forEach((el)=>{
+        totalCarrito += el.precio
+    })
 
-preguntarPrecios()
+    
+}
+//muestra el contenido del carrito de compras
+function mostrarCarrito(){
+    
+    for (el of carritoCompra){
+        console.log(el.titulo, el.precio)
+    }
+}    
+    
 
-    
-    
-    
- 
+
+
