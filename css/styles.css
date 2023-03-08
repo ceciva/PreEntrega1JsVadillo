@@ -10,8 +10,9 @@ html {
   }
   
 body {
-    background-image: url(/img/bubble2.png);
+    
     background-attachment: sticky;
+    
 }
 
 h1{
@@ -42,15 +43,18 @@ h5 {
     
 }
 .btn-more{
-    background: rgb(63,94,251);
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,236,1) 100%);
+    background-color: #a567f1;
     color: white;    
 }
-
-
 .center{
     text-align: center;
+}
+.card{
+    background: rgb(203,174,238);
+    background: radial-gradient(circle, rgba(203,174,238,1) 0%, rgba(148,233,203,0.989233193277311) 100%);
 }
 #inputSearch {
     font-size: larger;
 }
+
+

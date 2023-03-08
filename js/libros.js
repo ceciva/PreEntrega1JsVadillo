@@ -26,18 +26,33 @@ comprar()
 
 
 function comprar(){
+    
     while (continuar){ 
         iniciarConsulta()
         continuar = confirm("Querés comprar otro libro?")
     }
     
     finalizarCompra()
-    console.log('compraste los siguientes libros: ')
+    console.log('compraste los siguientes libros: ' )
     mostrarCarrito () 
-    console.log('el total de tu compra es de $: ' + totalCarrito)
     
-    // alert((carritoCompra.join ("\n")) + "\nEl total de tu compra es de $: "+ totalCarrito +"\nGracias por tu compra")
-}    
+    //preguntar si confirma la compra, vaciar el carrito o sacar algún libro del carrito
+    let confirmarOVaciar = prompt('el total de tu compra es de $: ' + totalCarrito  + '\nPresione \n  1 para confirmar \n  2 para vaciar el carrito ')
+    if (confirmarOVaciar ==='1'){
+        console.log('compra confirmada \nGracias, esperamos tu próxima compra')
+        
+    }else{
+        if (confirmarOVaciar ==='2'){
+            vaciarCarrito()
+        }else{
+            alert('ingresaste una opción equivocada')
+            
+        }
+        
+    }finalizarCompra()            
+          
+}                
+            
 
 //promptea nro de libro a comprar  chequea su validez
 function iniciarConsulta(){
@@ -57,7 +72,7 @@ function buscarLibro(libroElegido){
     
     
 }       
-// recorre el carrito y suma el precio de cada libro
+// recorre el carrito y suma el precio de cada libro del carrito de compras
 function finalizarCompra(){
     carritoCompra.forEach((el)=>{
         totalCarrito += el.precio
@@ -67,12 +82,21 @@ function finalizarCompra(){
 }
 //muestra el contenido del carrito de compras
 function mostrarCarrito(){
-    
-    for (el of carritoCompra){
-        console.log(el.titulo, el.precio)
+    if (carritoCompra.length>0){
+        for (el of carritoCompra){
+            console.log(el.titulo, el.precio)
+        }
+    }else{
+        console.log('el carrito de compras está vacio')
+        
+        
     }
-}    
-    
-
-
+} 
+//vacía el carrito
+function vaciarCarrito(){
+    while (carritoCompra.length>0){
+        carritoCompra.pop()
+        mostrarCarrito()
+    }
+}
 
