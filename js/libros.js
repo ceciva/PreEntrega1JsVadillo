@@ -34,25 +34,22 @@ function comprar(){
     
     finalizarCompra()
     console.log('compraste los siguientes libros: ' )
-    mostrarCarrito () 
-    
-    //preguntar si confirma la compra, vaciar el carrito o sacar algún libro del carrito
-    let confirmarOVaciar = prompt('el total de tu compra es de $: ' + totalCarrito  + '\nPresione \n  1 para confirmar \n  2 para vaciar el carrito ')
-    if (confirmarOVaciar ==='1'){
+    mostrarCarrito ()
+    confirmar() 
+               
+          
+} 
+
+//pregunta si confirma o vacía el carrito
+function confirmar(){
+    let confirmarOVaciar = confirm('el total de tu compra es de $: ' + totalCarrito  + '\nok para confirmar, \ncancela para vaciar el carrito')
+    if (confirmarOVaciar){
         console.log('compra confirmada \nGracias, esperamos tu próxima compra')
         
     }else{
-        if (confirmarOVaciar ==='2'){
-            vaciarCarrito()
-        }else{
-            alert('ingresaste una opción equivocada')
-            
-        }
-        
-    }finalizarCompra()            
-          
-}                
-            
+        vaciarCarrito()
+    }    
+}            
 
 //promptea nro de libro a comprar  chequea su validez
 function iniciarConsulta(){
@@ -96,7 +93,8 @@ function mostrarCarrito(){
 function vaciarCarrito(){
     while (carritoCompra.length>0){
         carritoCompra.pop()
-        mostrarCarrito()
+        
     }
+    mostrarCarrito()
 }
 
