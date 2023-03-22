@@ -12,6 +12,8 @@ html {
 body {
     
     background-attachment: sticky;
+    background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     
 }
 
@@ -35,6 +37,15 @@ h5 {
     font-weight: 300;
     text-align: center;
 }
+.cantidadLibros{
+    font-family: roboto;
+    font-weight: 800;
+    font-size: larger;
+    color: blueviolet;
+    text-decoration: none;
+  
+}
+
 
 .tapaLibro{
     width: 20vh;
@@ -53,6 +64,7 @@ h5 {
     background: rgb(203,174,238);
     background: radial-gradient(circle, rgba(203,174,238,1) 0%, rgba(148,233,203,0.989233193277311) 100%);
 }
+
 #inputSearch {
     font-size: larger;
 }

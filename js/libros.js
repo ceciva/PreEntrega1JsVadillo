@@ -1,100 +1,38 @@
-const libros = [ {titulo: 'Caballo De Fuego Paris' , codigo: 1, precio: 5500},
-                 {titulo: 'Caballo De Fuego Congo', codigo: 2, precio: 5500},
-                 {titulo: 'Caballo De Fuego Gaza', codigo: 3, precio: 5500},
-                 {titulo: 'El Cuarto Arcano', codigo: 4, precio: 4800},
-                 {titulo: 'Indias Blancas', codigo: 5, precio: 4200},
-                 {titulo: 'Indias Blancas', codigo: 6, precio: 4500},
-                 {titulo: 'El Hechizo Del Agua', codigo: 7, precio: 6800},
-                 {titulo: 'Bodas de fuego', codigo: 8, precio: 6200}]
-                 
-class CarritoCompra{
-    constructor (titulo, codigo, precio){
-        this.titulo = titulo
+const libros = [ {codigo: 1, titulo: 'Caballo De Fuego Paris' , precio: 8100, foto:"./img/caballoDeFuegoParis.webp"},
+                 {codigo: 2, titulo: 'Caballo De Fuego Congo', precio: 6300, foto:"./img/cabaloDeFuegoCongo.webp"},
+                 {codigo: 3, titulo: 'Caballo De Fuego Gaza',  precio: 6300, foto:"./img/caballoDeFuegoGaza.webp"},
+                 {codigo: 4, titulo: 'El Cuarto Arcano',  precio: 5600, foto:"./img/cuartoArcano.webp"},
+                 {codigo: 5, titulo: 'Indias Blancas', precio: 4200, foto:"./img/indiasBlancas.webp"},
+                 {codigo: 6, titulo: 'Indias Blancas',  precio: 4500, foto:"./img/indiasBlancas2.webp"},
+                 {codigo: 7, titulo: 'El Hechizo Del Agua',  precio: 7100, foto:"./img/elHechizoDelAgua.webp"},
+                 {codigo: 8,titulo: 'Bodas de odio',  precio: 6200, foto:"./img/bodasDeOdio.webp"}]
+                                  
+class CardsLibros{
+    constructor ( codigo, titulo, precio, foto){
         this.codigo = codigo
+        this.titulo = titulo
         this.precio = precio
+        this.foto = foto
     }
 }
-const carritoCompra = []
-
-let continuar = true
-let libroElegido = 0
-totalCarrito = 0
-
-window.addEventListener("load", function () {
-comprar()
-})
 
 
-function comprar(){
+function retornoCard(libro) {
+    return `<article class="col-sm-12 col-md-6 col-lg-3 ">
+    <div class="card" id="cardLibro ">
+    <img src= ${libro.foto} class= "tapaLibro"> 
+    <div class="card-body">
+    <h5 class="titLibro">${libro.titulo}</h5>
+    <p class= "card-text text-center">${libro.precio}</p>
+    <button class="btn btn-more d-grid gap-2 col-6 mx-auto " >Agregar al carrito</button>
+    </article>
     
-    while (continuar){ 
-        iniciarConsulta()
-        continuar = confirm("Querés comprar otro libro?")
-    }
-    
-    finalizarCompra()
-    console.log('compraste los siguientes libros: ' )
-    mostrarCarrito ()
-    confirmar() 
-               
-          
-} 
-
-//pregunta si confirma o vacía el carrito
-function confirmar(){
-    let confirmarOVaciar = confirm('el total de tu compra es de $: ' + totalCarrito  + '\nok para confirmar, \ncancela para vaciar el carrito')
-    if (confirmarOVaciar){
-        console.log('compra confirmada \nGracias, esperamos tu próxima compra')
-        
-    }else{
-        vaciarCarrito()
-    }    
-}            
-
-//promptea nro de libro a comprar  chequea su validez
-function iniciarConsulta(){
-    let libroElegido = parseInt(prompt("Ingrese el número del libro que desea comprar "))
-
-    if (libroElegido > libros.length|| libroElegido< 1 ||!parseInt(libroElegido)){
-        alert('Ingresaste un nro de libro incorrecto')
-        return
-    }else{
-        buscarLibro(libroElegido)
-    }
-}
-//busca el libro en el array y lo pushea al carrito de compras
-function buscarLibro(libroElegido){
-    let resultado = libros.find(libro => libro.codigo === libroElegido)
-    carritoCompra.push(new CarritoCompra(resultado.titulo, resultado.codigo, resultado.precio))
-    
-    
-}       
-// recorre el carrito y suma el precio de cada libro del carrito de compras
-function finalizarCompra(){
-    carritoCompra.forEach((el)=>{
-        totalCarrito += el.precio
-    })
-
-    
-}
-//muestra el contenido del carrito de compras
-function mostrarCarrito(){
-    if (carritoCompra.length>0){
-        for (el of carritoCompra){
-            console.log(el.titulo, el.precio)
-        }
-    }else{
-        console.log('el carrito de compras está vacio')
-        
-        
-    }
-} 
-//vacía el carrito
-function vaciarCarrito(){
-    while (carritoCompra.length>0){
-        carritoCompra.pop()
-        
-    }
-    mostrarCarrito()
+`
 }
 
+const container = document.getElementById("container")
+	libros.forEach(libro => {
+	container.innerHTML += retornoCard(libro)
+	})
+
+    
