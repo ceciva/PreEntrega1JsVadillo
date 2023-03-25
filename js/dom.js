@@ -3,9 +3,9 @@ const clickButton = document.querySelectorAll('.btn')
 
 const tbody = document.querySelector('.tbody')
 let carrito = []
-
 clickButton.forEach(boton=>{
     boton.addEventListener('click', buscarLibro)
+    
 })
 
 
@@ -32,12 +32,12 @@ function agregarAlCarrito(newLibro){
     for(let i=0; i < carrito.length; i++){
         if(carrito[i].title === newLibro.title){
             carrito[i].cantidad ++;
-                       
             actualizarCarrito()
             totalCarrito()
             return null;
         }
     }
+    
     carrito.push(newLibro)
     actualizarCarrito()
 }
@@ -56,8 +56,8 @@ function actualizarCarrito(){
                 <td class="precio"><p> ${libro.precio}  </p></td>
                 <td class="cantidad"><p>${libro.cantidad} </p><td>                               </td>
                 
-                   <button class = "delete boton btn-danger">x</button>
-                </td>  
+                <button class = "delete boton btn-danger">x</button>
+                 
         `
         tr.innerHTML = content
         tbody.append(tr)
@@ -86,12 +86,11 @@ function eliminarLibro(e){
     for(let i=0; i< carrito.length; i++){
         if(carrito[i].title.trim() === titulo.trim()){
             carrito.splice(i,1)
-            
             tr.remove()
         }    
                 
     }
-     totalCarrito()
+    totalCarrito()
 
 }
 clickFin = document.querySelector('.btn-success')
@@ -100,7 +99,8 @@ clickFin.addEventListener('click', finalizarCompra)
 function finalizarCompra(){
     let msj= document.createElement("p")
     msj.innerHTML=  "<h2>Tu compra ha sido exitosa. Esperamos que vuelvas a visitarnos pronto </h2>"
-    footer.append(msj)
+    document.body.append(msj)
+
     localStorage.clear()
 }
 function agregarAlStorage(){
@@ -113,9 +113,10 @@ window.onload = function(){
         actualizarCarrito()
     }
 }
-   
 
-    
+
+
+
 
         
     

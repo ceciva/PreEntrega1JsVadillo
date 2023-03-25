@@ -1,3 +1,4 @@
+
 const libros = [ {codigo: 1, titulo: 'Caballo De Fuego Paris' , precio: 8100, foto:"./img/caballoDeFuegoParis.webp"},
                  {codigo: 2, titulo: 'Caballo De Fuego Congo', precio: 6300, foto:"./img/cabaloDeFuegoCongo.webp"},
                  {codigo: 3, titulo: 'Caballo De Fuego Gaza',  precio: 6300, foto:"./img/caballoDeFuegoGaza.webp"},
@@ -19,7 +20,7 @@ class CardsLibros{
 
 function retornoCard(libro) {
     return `<article class="col-sm-12 col-md-6 col-lg-3 ">
-    <div class="card" id="cardLibro ">
+    <div class="card">
     <img src= ${libro.foto} class= "tapaLibro"> 
     <div class="card-body">
     <h5 class="titLibro">${libro.titulo}</h5>
