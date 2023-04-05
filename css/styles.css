@@ -37,6 +37,11 @@ h5 {
     font-weight: 300;
     text-align: center;
 }
+h6 {
+    font-family: roboto;
+    font-weight: 100;
+    text-align: center;
+}
 .cantidadLibros{
     font-family: roboto;
     font-weight: 800;
@@ -61,6 +66,7 @@ h5 {
     text-align: center;
 }
 .card{
+    
     background: rgb(203,174,238);
     background: radial-gradient(circle, rgba(203,174,238,1) 0%, rgba(148,233,203,0.989233193277311) 100%);
 }

@@ -1,0 +1,14 @@
+[ 
+    {"codigo":1, "titulo": "Caballo De Fuego Paris" , "precio": 8100, "foto": "./img/caballoDeFuegoParis.webp"},
+    {"codigo":2, "titulo": "Caballo De Fuego Congo", "precio": 6300, "foto": "./img/cabaloDeFuegoCongo.webp"},
+    {"codigo":3, "titulo": "Caballo De Fuego Gaza", "precio": 6300, "foto":"./img/caballoDeFuegoGaza.webp"},
+    {"codigo":4, "titulo": "El Cuarto Arcano",  "precio": 5600, "foto":"./img/cuartoArcano.webp"},
+    {"codigo":5, "titulo": "Indias Blancas 1", "precio": 4200, "foto":"./img/indiasBlancas.webp"},
+    {"codigo":6, "titulo": "Indias Blancas 2", "precio": 4500, "foto":"./img/indiasBlancas2.webp"},
+    {"codigo":7,"titulo": "El Hechizo Del Agua",  "precio": 7100, "foto":"./img/elHechizoDelAgua.webp"},
+    {"codigo":8,"titulo": "Bodas de odio", "precio": 6200, "foto":"./img/bodasDeOdio.webp"}
+]
+
+
+
+        
