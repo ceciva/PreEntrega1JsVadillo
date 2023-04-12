@@ -3,32 +3,32 @@
 fetch('./data.json')
     .then((res)=> res.json())
     .then(data=> armarCards(data))
+    .catch(err =>console.log(err));
     
+function armarCards(libros){
     
-    
-    function armarCards(libros){
-        
-        libros.forEach(libro=>{
+    libros.forEach(libro=>{
 
-            const container = document.getElementById("container")
-            container.innerHTML+= `
-            <article class="col-sm-12 col-md-6 col-lg-3 ">
-            <div class="card">
-            <h6 class="codigo" > ${libro.codigo}</h6>
-            <img src= ${libro.foto} class= "tapaLibro"> 
-            <div class="card-body">
-            <h5 class="titLibro">${libro.titulo}</h5>
-            <p class= "card-text text-center">${libro.precio}</p>
-            <button class= "btn btn-more d-grid gap-2 col-6 mx-auto id="${libro.codigo}" >Agregar al carrito</button>
-            </article>
-            `
-        })
-        // botones "agregar al carrito"
-        const clickButton = document.querySelectorAll('.btn')
-        clickButton.forEach(boton=>{
-            boton.addEventListener('click', buscarLibro)
-        })
-    }    
+        const container = document.getElementById("container")
+        container.innerHTML+= `
+        <article class="col-sm-12 col-md-6 col-lg-3 ">
+        <div class="card">
+        <h6 class="codigo" > ${libro.codigo}</h6>
+        <img src= ${libro.foto} class= "tapaLibro"> 
+        <div class="card-body">
+        <h5 class="titLibro">${libro.titulo}</h5>
+        <p class= "card-text text-center">${libro.precio}</p>
+        <button class= "btn btn-more d-grid gap-2 col-6 mx-auto id="${libro.codigo}" >Agregar al carrito</button>
+        </article>
+        `
+    })
+
+    // botones "agregar al carrito"
+    const clickButton = document.querySelectorAll('.btn')
+    clickButton.forEach(boton=>{
+        boton.addEventListener('click', buscarLibro)
+    })
+}    
 
 
 const tbody = document.querySelector('.tbody')
@@ -48,15 +48,13 @@ function buscarLibro(e){
         precio: itemPrecio,
         cantidad: 1
     }
-    console.log(newLibro)
+    
     swalEnCarrito()
     agregarAlCarrito(newLibro)
 }
 
 //busca el libro seleccionado en el array carrito, en caso de estar, suma 1, sino lo pushea al carrito
 function agregarAlCarrito(newLibro){
-    const inputLibro = tbody.getElementsByClassName('inputCantidadCarrito')
-   
     for(let i=0; i < carrito.length; i++){
         if(carrito[i].title === newLibro.title){
             carrito[i].cantidad ++;
@@ -67,6 +65,7 @@ function agregarAlCarrito(newLibro){
     }
     carrito.push(newLibro)
     actualizarCarrito()
+    
 }
 
 // agrega el libro a la tabla de carrito para mostrar al usuario
@@ -81,13 +80,11 @@ function actualizarCarrito(){
                 <td class="titulo"> ${libro.title} </td>
                 <td class="precio"><p> ${libro.precio}  </p></td>
                 <td class="cantidad"><p>${libro.cantidad} </p></td>                               
-                
                 <button class = "delete boton btn-danger">x</button>
-                 
+    	
         `
         tr.innerHTML = content
         tbody.append(tr)
-        
         tr.querySelector('.delete').addEventListener ('click', eliminarLibro)
     })
     totalCarrito()
@@ -111,6 +108,7 @@ function eliminarLibro(e){
      
     for(let i=0; i< carrito.length; i++){
         if(carrito[i].title.trim() === titulo.trim()){
+        
             if(carrito[i].cantidad===1){
                 carrito.splice(i,1)
                 tr.remove()
@@ -122,8 +120,6 @@ function eliminarLibro(e){
     }
     swalEliminado()
     actualizarCarrito()
-    totalCarrito()
-
 }
 //click en el botón comprar carrito
 clickFin = document.querySelector('.btn-success')
@@ -131,12 +127,9 @@ clickFin.addEventListener('click', finalizarCompra)
 
 //envía msj de compra exitosa y borra local storage
 function finalizarCompra(){
-    if (carrito.length>0){
-        swalComprarCarrito()
-        localStorage.clear()
-    }else{
-        swalCarritoVacio()
-    }
+    carrito.length>0? swalComprarCarrito():swalCarritoVacio()
+    localStorage.clear()
+    llenarFormulario()
 }
 
 //almacena datos del carrito al local storage
@@ -151,11 +144,24 @@ window.onload = function(){
         actualizarCarrito()
     }
 }
-let nroEnCarrito = document.querySelector('.navbar-brand')
 
-function Sumar1EnCarrito(nroEnCarrito){
-  
-}
+function llenarFormulario(){
+    let form = document.getElementById('form')
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let nombre = e.target[0].value
+        let apellido = e.target[1].value
+        let email = e.target[2].value
+           
+        let modal = document.createElement('div')
+        modal.innerHTML = `Gracias por tu compra ${nombre} ${apellido} . Tus datos fueron enviados`
+        document.body.appendChild(modal)
+        setTimeout(() => {
+            document.body.removeChild(modal)
+        }, 3000)
+    })   
+    }
+
 
 //sweet alert: libro eliminado del carrito
 function swalEliminado(){
@@ -180,15 +186,13 @@ function swalEliminado(){
   }).then((result) => {
     if (result.isConfirmed) {
       swal.fire(
-        'Tu compra ha sido exitosa. Te derivamos a la página para que realices tu pago',
-        formularioPago()
-      )
+        'Ya casi son tuyos! Completa tus datos en el formulario')
     } 
   })} 
 
    //sweet alert: libro agregado al carrito
    function swalEnCarrito(){
-   Swal.fire({
+    Swal.fire({
     position: 'top-start',
     icon: 'success',
     title: 'Libro agregado al carrito',
@@ -204,9 +208,7 @@ function swalEliminado(){
         showConfirmButton: true,
         
       })}
-function formularioPago(){
-    
-}      
+
 
 
 

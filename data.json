@@ -6,7 +6,11 @@
     {"codigo":5, "titulo": "Indias Blancas 1", "precio": 4200, "foto":"./img/indiasBlancas.webp"},
     {"codigo":6, "titulo": "Indias Blancas 2", "precio": 4500, "foto":"./img/indiasBlancas2.webp"},
     {"codigo":7,"titulo": "El Hechizo Del Agua",  "precio": 7100, "foto":"./img/elHechizoDelAgua.webp"},
-    {"codigo":8,"titulo": "Bodas de odio", "precio": 6200, "foto":"./img/bodasDeOdio.webp"}
+    {"codigo":8,"titulo": "Bodas de odio", "precio": 6200, "foto":"./img/bodasDeOdio.webp"},
+    {"codigo":9,"titulo": "Alma negra", "precio": 7200, "foto":"./img/almaNegra1.webp"},
+    {"codigo":10,"titulo": "Jasy", "precio": 7800, "foto":"./img/jasy2.webp"},
+    {"codigo":11,"titulo": "La tierra sin mal", "precio": 8000, "foto":"./img/laTierraSinMal.webp"},
+    {"codigo":12,"titulo": "Lo que dicen tus ojos", "precio": 7200, "foto":"./img/loQueDicenTusOjos.webp"}
 ]
 
 

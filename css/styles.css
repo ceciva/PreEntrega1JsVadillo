@@ -50,6 +50,13 @@ h6 {
     text-decoration: none;
   
 }
+.nav{
+    background: radial-gradient(circle, rgba(203,174,238,1) 0%, rgba(148,233,203,0.989233193277311) 100%);
+    z-index: 1;
+}
+.nav-carrito{
+    align-self: flex-end;
+}
 
 
 .tapaLibro{
@@ -58,7 +65,7 @@ h6 {
     margin: 5% auto;
     
 }
-.btn-more{
+.btn-more, .btn-nav{
     background-color: #a567f1;
     color: white;    
 }
@@ -79,6 +86,10 @@ h6 {
 
 #inputSearch {
     font-size: larger;
+}
+#form {
+    width: 300px;
+    margin: auto;
 }
 
 
