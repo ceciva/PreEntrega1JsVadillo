@@ -82,6 +82,7 @@ function actualizarCarrito(){
                 <td class="cantidad"><p>${libro.cantidad} </p></td>                               
                 <button class = "delete boton btn-danger">x</button>
     	
+    	
         `
         tr.innerHTML = content
         tbody.append(tr)
@@ -108,6 +109,7 @@ function eliminarLibro(e){
      
     for(let i=0; i< carrito.length; i++){
         if(carrito[i].title.trim() === titulo.trim()){
+        
         
             if(carrito[i].cantidad===1){
                 carrito.splice(i,1)
@@ -145,8 +147,6 @@ window.onload = function(){
     }
 }
 
-          
-          
 function llenarFormulario(){
     let form = document.getElementById('form')
     form.addEventListener('submit', (e) => {
@@ -162,8 +162,6 @@ function llenarFormulario(){
         }, 3000)
     })
 }     
-    
-
 
 //sweet alert: libro eliminado del carrito
 function swalEliminado(){
@@ -210,6 +208,7 @@ function swalEliminado(){
         showConfirmButton: true,
         
       })}
+
 
 
 
